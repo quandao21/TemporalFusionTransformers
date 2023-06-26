@@ -109,6 +109,7 @@ class HyperparamOptManager:
 
   def _get_params_from_name(self, name):
     """Returns previously saved parameters given a key."""
+    _ = self.load_results()
     params = self.saved_params
 
     selected_params = dict(params[name])

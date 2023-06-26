@@ -1112,7 +1112,7 @@ class TemporalFusionTransformer(object):
         tf.keras.callbacks.EarlyStopping(
             monitor='val_loss',
             patience=self.early_stopping_patience,
-            min_delta=1e-4),
+            min_delta=0),
         tf.keras.callbacks.ModelCheckpoint(
             filepath=self.get_keras_saved_path(self._temp_folder),
             monitor='val_loss',
@@ -1250,7 +1250,7 @@ class TemporalFusionTransformer(object):
       flat_prediction['forecast_time'] = time[:, self.num_encoder_steps - 1, 0]
       flat_prediction['identifier'] = identifier[:, 0, 0]
       concat_df = pd.concat([flat_prediction[['forecast_time', 'identifier']], input_series, flat_prediction.drop(['forecast_time', 'identifier'], axis=1)], axis=1)
-      concat_df.to_csv(f"D:/Research Milestones/Temporal Fusion Transformers/saved_models/piezo/fixed/prediction_{quantile}.csv")
+      concat_df.to_csv(f"D:/Research Milestones/Temporal Fusion Transformers/saved_models/piezo/fixed/1prediction_{quantile}.csv")
       # flat_prediction[['forecast_time', 'identifier'] + cols].to_csv(f"D:/Research Milestones/Temporal Fusion Transformers/saved_models/piezo/fixed/prediction_{quantile}.csv")
       # Arrange in order
       return flat_prediction[['forecast_time', 'identifier'] + cols]

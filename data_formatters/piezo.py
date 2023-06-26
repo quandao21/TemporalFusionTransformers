@@ -36,7 +36,7 @@ class PiezoFormatter(GenericDataFormatter):
         self._target_scaler = None
         self._num_classes_per_cat_input = None
         self._time_steps = self.get_fixed_params()['total_time_steps']
-    def split_data(self, df, valid_boundary=0.8*307200, test_boundary=0.9*307200):
+    def split_data(self, df, valid_boundary=0.8*78600, test_boundary=0.9*78600):
         """Splits data frame into training-validation-test data frames.
 
         This also calibrates scaling object, and transforms data for each split.
@@ -240,8 +240,8 @@ class PiezoFormatter(GenericDataFormatter):
         """Returns fixed model parameters for experiments."""
 
         fixed_params = {
-            'total_time_steps': 192,
-            'num_encoder_steps': 168,
+            'total_time_steps': 128*6,
+            'num_encoder_steps': 128*5,
             'num_epochs': 100,
             'early_stopping_patience': 5,
             'multiprocessing_workers': 5
